@@ -1,0 +1,21 @@
+/place-my-order.http.post:
+  summary: Place user's order
+  description: Place user's order
+  fn: place-my-order
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            frmoRestaurant:
+              type: integer
+            orderItems:
+              type: array
+              items:
+                type: object
+                properties:
+                  menuItemId:
+                    type: integer
+                  quantity:
+                    type: integer

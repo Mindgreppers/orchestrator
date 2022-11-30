@@ -1,0 +1,26 @@
+summary: Food prepared
+tasks:
+  - id: food_prepared
+    fn: com.gs.http
+    args:
+      datasource: restaurant
+      data:
+        orderStatus: READY_TO_PICKUP
+      config:
+        url: /postgres/order/<% Number(inputs.params.orderId) %>
+        method: put
+    on_error:
+      continue: false
+      response:
+        code: 500
+        success: false
+        data: 'Something went wrong. Please try again after sometime.'
+  - id: notify_customer
+    fn: com.gs.kafka
+    args:
+      datasource: kafka1
+      config:
+        method: publish
+        topic: notification
+      data: 
+        value: '[Notification][To Customer] Your order is out for delivery.'       

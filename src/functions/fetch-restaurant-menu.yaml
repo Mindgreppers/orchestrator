@@ -1,0 +1,17 @@
+summary: Function for fetching restaurant's menu
+tasks:
+  - id: fetch_restaurant_menu
+    fn: com.gs.http
+    args:
+      datasource: restaurant
+      params:
+      data:
+        where:
+          restaurantId: <% inputs.query.restaurantId %>
+        select:
+          id: true
+          name: true
+          description: true
+      config:
+        url: /postgres/menuitems/search
+        method: post

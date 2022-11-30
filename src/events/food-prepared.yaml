@@ -1,0 +1,27 @@
+/food-prepared/:orderId.http.post:
+  summary: Restaurant notify's the system that order is prepared
+  description: Once order is ready at the restaurant, restaurant notify's the system about completion
+  fn: food-prepared
+  params:
+    - name: orderId
+      in: path
+      required: true
+      schema:
+        type: string
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            accept:
+              type: boolean
+              default: true
+              enum:
+                - true
+                - false
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object

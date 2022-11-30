@@ -1,0 +1,19 @@
+/update-live-location.http.post:
+  summary: Update live location
+  description: Update live location of delivery partner
+  fn: update-live-location
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            latitude:
+              type: string
+            longitude:
+              type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: ["object", "array"]

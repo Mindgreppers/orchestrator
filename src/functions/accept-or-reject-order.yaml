@@ -1,0 +1,11 @@
+summary: Accept incoming order
+tasks:
+  - id: accept_or_reject_order
+    fn: com.gs.http
+    args:
+      datasource: restaurant
+      data:
+        orderStatus: WAITING_FOR_DELIVERY_PARTNER
+      config:
+        url: /postgres/order/<% Number(inputs.params.orderId) %>
+        method: put

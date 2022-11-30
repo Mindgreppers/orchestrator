@@ -1,0 +1,24 @@
+summary: Function for finding restaurant with the provided city in qyery params
+tasks:
+  - id: fetch_restaurants
+    fn: com.gs.http
+    args:
+      datasource: restaurant
+      params:
+      data:
+        where:
+          location:
+            contains: <% inputs.query.city %>
+            mode: 'insensitive'
+        select:
+          id: true
+          name: true
+          description: true
+          location: true
+          since: true
+          isOpen: true
+          opsStartTime: true
+          opsEndTime: true
+      config:
+        url: /postgres/restaurant/search
+        method: post

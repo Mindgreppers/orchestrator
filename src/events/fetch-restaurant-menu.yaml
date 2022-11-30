@@ -1,0 +1,15 @@
+/fetch-restaurant-menu:restaurantId.http.get:
+  summary: Fetch the menu of the restaurant
+  description: Fetch the menu of the restaurant based on restaurant id
+  fn: fetch-restaurant-menu
+  params:
+    - name: restaurantId
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: array

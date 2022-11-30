@@ -1,0 +1,27 @@
+/accept-or-reject-order/:orderId.http.post:
+  summary: Restaurant accept / reject order
+  description: Based on availability, restaurant accept or rejects order
+  fn: accept-or-reject-order
+  params:
+    - name: orderId
+      in: path
+      required: true
+      schema:
+        type: string
+  body:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            accept:
+              type: boolean
+              default: true
+              enum:
+                - true
+                - false
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object

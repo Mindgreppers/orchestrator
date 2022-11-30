@@ -1,0 +1,16 @@
+/find-restaurant-near-me.http.post:
+  summary: Search restaurants near me
+  description: Search restaurants near my location, (for demo, it does with matching city name)
+  fn: find-restaurant-near-me
+  authn: false
+  params:
+    - name: city
+      in: query
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object

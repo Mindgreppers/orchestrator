@@ -1,0 +1,11 @@
+summary: Food prepared
+tasks:
+  - id: notify_customer
+    fn: com.gs.kafka
+    args:
+      datasource: kafka1
+      config:
+        method: publish
+        topic: notification
+      data: 
+        value: "[Notification][To Customer] Delivery partner's live location."
