@@ -28,7 +28,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: user/app:$(date +%s)
+        tags: adminmindgrep/orchestrator:$(date +%s)
 
     # - name: Build and push
     #   uses: docker/build-push-action@v2
