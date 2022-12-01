@@ -30,6 +30,6 @@ jobs:
     - name: Application Deployment
       run: |
           cd helm-chart
-          helm template --dry-run . --set image.repository=adminmindgrep/orchestrator
+          helm template --dry-run .
           
 #  helm install orchestrator . -n orchestrator --set image.repository=adminmindgrep/orchestrator
