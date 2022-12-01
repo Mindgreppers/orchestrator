@@ -28,7 +28,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: adminmindgrep/orchestrator:${{ GITHUB_SHA }}
+        tags: adminmindgrep/orchestrator:${{ GITHUB_JOB }}
 
     # - name: Build and push
     #   uses: docker/build-push-action@v2
