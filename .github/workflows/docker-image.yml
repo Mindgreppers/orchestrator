@@ -22,7 +22,7 @@ jobs:
     - name: Build and Push Docker Image
       uses: mr-smithers-excellent/docker-build-push@v5
       with:
-        image: adminmindgrep/orchestrainer
+        image: adminmindgrep/orchestrator
         registry: docker.io
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
@@ -30,6 +30,6 @@ jobs:
     - name: Application Deployment
       run: |
           cd helm-chart
-          helm template --dry-run . --set image.repository=adminmindgrep/orchestrainer
+          helm template --dry-run . --set image.repository=adminmindgrep/orchestrator
           
-#  helm install orchestrainer . -n orchestrainer --set image.repository=adminmindgrep/orchestrainer
+#  helm install orchestrator . -n orchestrator --set image.repository=adminmindgrep/orchestrator
