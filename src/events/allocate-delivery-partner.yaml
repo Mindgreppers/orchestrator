@@ -1,0 +1,16 @@
+/allocate-delivery-partner.http.post:
+  summary: Allocate delivery partner
+  description: Allocate delivery partner
+  fn: allocate-delivery-partner
+  authn: false
+  params:
+    - name: city
+      in: query
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object

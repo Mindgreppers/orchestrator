@@ -22,3 +22,9 @@ tasks:
       config:
         url: /postgres/restaurant/search
         method: post
+    on_error:
+      continue: false
+      response:
+        code: 500
+        success: false
+        data: 'Something went wrong. Unable to find restaurants, please try again after sometime.'

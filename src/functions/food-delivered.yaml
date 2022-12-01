@@ -1,0 +1,42 @@
+summary: Food delivered
+tasks:
+  - id: food_delivered
+    fn: com.gs.http
+    args:
+      datasource: restaurant
+      data:
+        orderStatus: DELIVERED
+      config:
+        url: /postgres/order/<% Number(inputs.params.orderId) %>
+        method: put
+    on_error:
+      continue: false
+      response:
+        code: 500
+        success: false
+        data: 'Something went wrong. Please try again after sometime.'
+  - id: notify_customer
+    fn: com.gs.kafka
+    args:
+      datasource: kafka1
+      config:
+        method: publish
+        topic: notification
+      data: 
+        value: "[Notification][To Customer] Your food has been delivered. Don't forget to rate our service."
+  - id: mark_DP_free
+    fn: com.gs.http
+    args:
+      datasource: delivery
+      data: 
+        llLatitude: null
+        llLongitude: null
+      config:
+        url: /postgres/deliverypartner/<% Number(inputs.params.deliveryPartnerId) %>
+        method: put
+    on_error:
+      continue: false
+      response:
+        code: 500
+        success: false
+        data: 'Something went wrong. Unable to mark delivery partner free, please try again after sometime.'      

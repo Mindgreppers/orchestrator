@@ -3,6 +3,8 @@ api_version: "1.0"
 lang: coffee
 restaurant:
   base_url: http://192.168.1.9:3001/
+delivery:
+  base_url: http://192.168.1.9:3000/
 kafka1:
   client_id: orchestrator
   brokers: [ "kafka:9092" ]

@@ -1,7 +1,13 @@
-/update-live-location.http.post:
+/update-live-location/:deliveryPartnerId.http.post:
   summary: Update live location
   description: Update live location of delivery partner
   fn: update-live-location
+  params:
+    - name: deliveryPartnerId
+      in: path
+      required: true
+      schema:
+        type: string
   body:
     content:
       application/json:

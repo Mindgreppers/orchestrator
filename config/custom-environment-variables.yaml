@@ -1,5 +1,7 @@
 restaurant:
   base_url: RESTAURANT_BASE_URL
+delivery:
+  base_url: DELIVERY_BASE_URL
 kafka1:
   client_id: KAFKA_CLIENT_ID
   brokers: KAFKA_BROKERS

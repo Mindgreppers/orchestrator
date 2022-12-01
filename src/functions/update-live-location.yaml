@@ -1,5 +1,21 @@
 summary: Food prepared
 tasks:
+  - id: update_live_location
+    fn: com.gs.http
+    args:
+      datasource: delivery
+      data: 
+        llLatitude: <% inputs.body.latitude %>
+        llLongitude: <% inputs.body.longitude %>
+      config:
+        url: /postgres/deliverypartner/<% Number(inputs.params.deliveryPartnerId) %>
+        method: put
+    on_error:
+      continue: false
+      response:
+        code: 500
+        success: false
+        data: 'Something went wrong. Unable to update delivery partner live location, please try again after sometime.'
   - id: notify_customer
     fn: com.gs.kafka
     args:
@@ -8,4 +24,13 @@ tasks:
         method: publish
         topic: notification
       data: 
-        value: "[Notification][To Customer] Delivery partner's live location."
+        value: <% "[Notification][To Customer] Delivery partner's live location {latitude=" + inputs.body.latitude + ", longitude=" + inputs.body.longitude + '}' %>
+  - id: notify_RM
+    fn: com.gs.kafka
+    args:
+      datasource: kafka1
+      config:
+        method: publish
+        topic: notification
+      data: 
+        value: <% "[Notification][To RM] Delivery partner's live location {latitude=" + inputs.body.latitude + ", longitude=" + inputs.body.longitude + '}' %>

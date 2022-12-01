@@ -1,11 +1,35 @@
 summary: Accept incoming order
 tasks:
-  - id: accept_or_reject_order
-    fn: com.gs.http
-    args:
-      datasource: restaurant
-      data:
-        orderStatus: WAITING_FOR_DELIVERY_PARTNER
-      config:
-        url: /postgres/order/<% Number(inputs.params.orderId) %>
-        method: put
+  - id: check_accept
+    description: check accept true or false
+    fn: com.gs.switch
+    value: <%inputs.body.accept%>
+    cases:
+      true:
+        - id: accept_or_reject_order
+          fn: com.gs.http
+          args:
+            datasource: restaurant
+            data:
+              orderStatus: WAITING_FOR_DELIVERY_PARTNER
+            config:
+              url: /postgres/order/<% Number(inputs.params.orderId) %>
+              method: put
+          on_error:
+            continue: false
+            response:
+              code: 500
+              success: false
+              data: 'Something went wrong. Please try again after sometime.'
+      false:
+        - id: notify_customer
+          fn: com.gs.kafka
+          args:
+            datasource: kafka1
+            config:
+              method: publish
+              topic: notification
+            data: 
+              value: '[Notification][To Customer] Sorry, we cannot fulfill your order right now.'       
+
+

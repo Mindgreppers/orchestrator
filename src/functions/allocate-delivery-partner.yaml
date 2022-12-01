@@ -1,0 +1,41 @@
+summary: Function for finding restaurant with the provided city in qyery params
+tasks:
+  - id: update_live_location
+    fn: com.gs.http
+    args:
+      datasource: delivery
+      data:
+        where:
+          location:
+            contains: <% inputs.query.city %>
+            mode: 'insensitive'
+          llLatitude: null
+          llLongitude: null
+      config:
+        url: /postgres/deliverypartner/search
+        method: post
+    on_error:
+      continue: false
+      response:
+        code: 500
+        success: false
+        data: 'Something went wrong. Unable to allocate delivery partner, please try again after sometime.'
+  - id: check_availability_DP
+    description: check availability of DP
+    fn: com.gs.switch
+    value: <%outputs.update_live_location.data.length%>
+    cases:
+      0:
+        - id: notify_customer
+          fn: com.gs.kafka
+          args:
+            datasource: kafka1
+            config:
+              method: publish
+              topic: notification
+            data: 
+              value: '[Notification][To Customer] Sorry, no delivery partner is available.'      
+      default:        
+        - id: transform_response
+          fn: com.gs.transform
+          args: <% outputs.update_live_location.data[0] %>
