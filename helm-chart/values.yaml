@@ -90,8 +90,8 @@ secrets:
 
 
 existingsecret:
-  enabled: false
-  name: lp-secret
+  enabled: true
+  name: db-creds
 
 env:
   data: 
