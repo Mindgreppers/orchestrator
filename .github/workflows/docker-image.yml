@@ -30,7 +30,7 @@ jobs:
         push: true
         context: .
         file: Dockerfile
-        tags: adminmindgrep/orchestrator:${{ GITHUB_JOB }}
+        tags: adminmindgrep/orchestrator:$(date +%s)
     # - name: Build and Push Docker Image
     #   uses: mr-smithers-excellent/docker-build-push@v5
     #   with:
