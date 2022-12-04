@@ -55,6 +55,6 @@ jobs:
           kubectl get pods -n app
           helm ls -n app
           cd helm-chart
-          helm upgrade orvhestrator . --set image.repository=adminmindgrep/orvhestrator --set image.tag=${{ github.run_id }} -n app
+          helm upgrade orchestrator . --set image.repository=adminmindgrep/orchestrator --set image.tag=${{ github.run_id }} -n app
           sleep 30
           kubectl get pods -n app
