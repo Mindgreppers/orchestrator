@@ -1,0 +1,1 @@
+{"projectName":"orchestrator","mongodb":false,"postgresql":false,"kafka":true,"elasticsearch":false,"redis":false,"svcPort":3001,"zookeeperPort":2181,"kafkaPort":9092}
