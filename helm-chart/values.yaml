@@ -5,10 +5,10 @@
 replicaCount: 1
 
 image:
-  repository: nginx
+  repository: adminmindgrep/orchestrator
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: ""
+  tag: "3646817670"
 
 imagePullSecrets: []
 name: ""
@@ -93,13 +93,13 @@ existingsecret:
   enabled: true
   name: db-creds
 
+
 env:
   data: 
     OTEL_SERVICE_NAME: orchestrator
     OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector.monitoring.svc:4317
     RESTAURANT_BASE_URL: http://restaurant.app.svc
     DELIVERY_BASE_URL: http://delivery.app.svc
-    KAFKA_BROKERS: kafka-0.kafka-headless.app.svc.cluster.local:9092
     KAFKA_CLIENT_ID: orchestrator
 
 containerPort: 3000
