@@ -96,7 +96,7 @@ existingsecret:
 env:
   data: 
     OTEL_SERVICE_NAME: orchestrator
-    OTEL_EXPORTER_OTLP_METRICS_ENDPOINT: http://otel-collector.monitoring.svc:4317
+    OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector.monitoring.svc:4317
     RESTAURANT_BASE_URL: http://restaurant.app.svc
     DELIVERY_BASE_URL: http://delivery.app.svc
     
