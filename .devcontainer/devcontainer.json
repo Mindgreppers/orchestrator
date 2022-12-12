@@ -1,6 +1,6 @@
 {
     "name": "orchestrator",
-    "forwardPorts": [3002],
+    "forwardPorts": [3001],
     "remoteUser": "node",
     "settings": {
       "terminal.integrated.profiles.linux": {
