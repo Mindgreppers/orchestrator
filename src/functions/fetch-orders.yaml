@@ -1,0 +1,12 @@
+summary: Function for fetching orders
+tasks:
+  - id: fetch_orders
+    fn: com.gs.http
+    args:
+      datasource: restaurant
+      data:
+        where:
+          restaurantId: <% Number(inputs.query.restaurantId) %>
+      config:
+        url: /postgres/orders/search
+        method: post

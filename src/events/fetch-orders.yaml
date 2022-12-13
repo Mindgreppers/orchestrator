@@ -1,0 +1,16 @@
+/fetch-orders/:restaurantId.http.get:
+  summary: Fetch orders list
+  description: Fetch orders for restaurant
+  fn: fetch_orders
+  authn: false
+  params:
+    - name: restaurantId
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    content:
+      application/json:
+        schema:
+          type: array
