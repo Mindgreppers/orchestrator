@@ -9,9 +9,7 @@ tasks:
           frmoRestaurant: <% Number(inputs.params.restaurantId) %>
         include:
           orderItems: true
-          menuItem:
-            select:
-              title: true
       config:
         url: /postgres/order/search
         method: post
+        
