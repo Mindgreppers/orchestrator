@@ -6,7 +6,12 @@ tasks:
       datasource: restaurant
       data:
         where:
-          restaurantId: <% Number(inputs.query.restaurantId) %>
+          frmoRestaurant: <% Number(inputs.params.restaurantId) %>
+        include:
+          orderItems: true
+          menuItem:
+            select:
+              title: true
       config:
-        url: /postgres/orders/search
+        url: /postgres/order/search
         method: post

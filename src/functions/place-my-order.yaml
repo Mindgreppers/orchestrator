@@ -20,12 +20,12 @@ tasks:
         code: 500
         success: false
         data: 'Something went wrong. Unable to place order, please try again after sometime.'
-  - id: notify_customer
-    fn: com.gs.kafka
-    args:
-      datasource: kafka1
-      config:
-        method: publish
-        topic: notification
-      data: 
-        value: <% '[Notification][To RM] Can you accept the order? (OrderId=outputs.place_order.data.id)' %>       
+  # - id: notify_customer
+  #   fn: com.gs.kafka
+  #   args:
+  #     datasource: kafka1
+  #     config:
+  #       method: publish
+  #       topic: notification
+  #     data:
+  #       value: <% '[Notification][To RM] Can you accept the order? (OrderId=outputs.place_order.data.id)' %>

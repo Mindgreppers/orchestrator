@@ -1,7 +1,7 @@
 /fetch-orders/:restaurantId.http.get:
   summary: Fetch orders list
   description: Fetch orders for restaurant
-  fn: fetch_orders
+  fn: fetch-orders
   authn: false
   params:
     - name: restaurantId

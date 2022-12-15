@@ -19,3 +19,8 @@
                     type: integer
                   quantity:
                     type: integer
+  responses:
+    content:
+      application/json:
+        schema:
+          type: object
