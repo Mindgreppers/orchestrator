@@ -1,6 +1,6 @@
 summary: Function for finding restaurant with the provided city in qyery params
 tasks:
-  - id: update_live_location
+  - id: allocate_delivery_partner
     fn: com.gs.http
     args:
       datasource: delivery
@@ -23,7 +23,7 @@ tasks:
   - id: check_availability_DP
     description: check availability of DP
     fn: com.gs.switch
-    value: <%outputs.update_live_location.data.length%>
+    value: <%outputs.allocate_delivery_partner.data.length%>
     cases:
       0:
         - id: notify_customer
@@ -33,9 +33,21 @@ tasks:
             config:
               method: publish
               topic: notification
-            data: 
-              value: '[Notification][To Customer] Sorry, no delivery partner is available.'      
-      default:        
-        - id: transform_response
-          fn: com.gs.transform
-          args: <% outputs.update_live_location.data[0] %>
+            data:
+              value: '[Notification][To Customer] Sorry, no delivery partner is available.'
+      default:
+        - id: assign_delivery_partner
+          fn: com.gs.http
+          args:
+            datasource: restaurant
+            data:
+              orderStatus: WAITING_FOR_APPROVAL_FROM_RESTAURANT
+            config:
+              url: /postgres/order/<% Number(inputs.params.orderId) %>
+              method: put
+          on_error:
+            continue: false
+            response:
+              code: 500
+              success: false
+              data: 'Something went wrong. Please try again after sometime.'

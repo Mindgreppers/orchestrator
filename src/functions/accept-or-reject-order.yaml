@@ -29,7 +29,7 @@ tasks:
             config:
               method: publish
               topic: notification
-            data: 
-              value: '[Notification][To Customer] Sorry, we cannot fulfill your order right now.'       
+            data:
+              value: '[Notification][To Customer] Sorry, we cannot fulfill your order right now.'
 
 

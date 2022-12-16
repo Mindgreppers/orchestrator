@@ -1,4 +1,4 @@
-/allocate-delivery-partner.http.post:
+/allocate-delivery-partner/:orderId.http.post:
   summary: Allocate delivery partner
   description: Allocate delivery partner
   fn: allocate-delivery-partner
@@ -6,6 +6,11 @@
   params:
     - name: city
       in: query
+      required: true
+      schema:
+        type: string
+    - name: orderId
+      in: path
       required: true
       schema:
         type: string

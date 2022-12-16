@@ -15,12 +15,12 @@ tasks:
         code: 500
         success: false
         data: 'Something went wrong. Please try again after sometime.'
-  - id: notify_customer
-    fn: com.gs.kafka
-    args:
-      datasource: kafka1
-      config:
-        method: publish
-        topic: notification
-      data: 
-        value: '[Notification][To Customer] Your order is out for delivery.'       
+  # - id: notify_customer
+  #   fn: com.gs.kafka
+  #   args:
+  #     datasource: kafka1
+  #     config:
+  #       method: publish
+  #       topic: notification
+  #     data:
+  #       value: '[Notification][To Customer] Your order is out for delivery.'
