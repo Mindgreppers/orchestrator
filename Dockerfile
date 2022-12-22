@@ -4,6 +4,7 @@ WORKDIR /workspace/development/app
 COPY --chown=node:node . .
 RUN  npm install && godspeed prisma-push && godspeed build
 
+
 FROM node:16.14.2-slim
 RUN apt update && apt install cmake vim g++ -y && mkdir -p /usr/src/app && chown -R node:node /usr/src/app && rm -rf /var/cache/apt/* && rm -rf /var/log/apt
 RUN mkdir -p /workspace/development/app && chown -R node:node /workspace
