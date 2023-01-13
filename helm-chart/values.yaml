@@ -24,7 +24,11 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: ""
 
-podAnnotations: {}
+podAnnotations:
+  prometheus.io/scrape: 'true'
+  prometheus.io/path: '/metrics'
+  prometheus.io/port: '80'
+
   # vault.hashicorp.com/agent-inject: 'true'
   # vault.hashicorp.com/role: 'vault-role'
   # vault.hashicorp.com/agent-inject-secret-app-credentials.sh: 'internal/data/database/config'
