@@ -8,7 +8,7 @@ image:
   repository: adminmindgrep/orchestrator
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: '3780509771'
+  tag: '4946678346'
 
 imagePullSecrets: []
 name: ""
