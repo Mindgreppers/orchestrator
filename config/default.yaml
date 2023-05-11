@@ -1,7 +1,7 @@
 log_level: debug
 api_version: "1.0"
 lang: js
-# server_url: http://demo.godspeed.systems
+server_url: http://demo.godspeed.systems
 restaurant:
   base_url: http://host.docker.internal:3002/
 delivery:
