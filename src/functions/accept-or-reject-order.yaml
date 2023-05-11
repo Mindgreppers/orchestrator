@@ -1,3 +1,4 @@
+id: accept-or-reject-order
 summary: Accept incoming order
 tasks:
   - id: check_accept
@@ -16,11 +17,26 @@ tasks:
               url: /postgres/order/<% Number(inputs.params.orderId) %>
               method: put
           on_error:
+            # DEMO:
             continue: false
-            response:
-              code: 500
-              success: false
-              data: 'Something went wrong. Please try again after sometime.'
+            # tasks:
+            #   - id: transform
+            #     fn: com.gs.transform
+            #     args: |
+            #       <%
+            #         if(outputs.accept_or_reject_order.code == 401) {
+            #           return {
+            #             code: '200',
+            #             status: 'success',
+            #             data: outputs.accept_or_reject_order.data
+            #           }
+            #         }
+            #       %>
+            # response:
+            #   code: 500
+            #   success: false
+            #   data: "Something went wrong. Please try again after sometime. .."
+
       false:
         - id: notify_customer
           fn: com.gs.kafka
@@ -30,6 +46,4 @@ tasks:
               method: publish
               topic: notification
             data:
-              value: '[Notification][To Customer] Sorry, we cannot fulfill your order right now.'
-
-
+              value: "[Notification][To Customer] Sorry, we cannot fulfill your order right now."

@@ -1,0 +1,7 @@
+id: validation
+summary: Validation Function
+tasks:
+  - id: validate
+    description: check accept true or false
+    fn: com.gs.return
+    args: <% return true %>

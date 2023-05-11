@@ -1,0 +1,9 @@
+id: auth
+summary: Auth workflow
+tasks:
+    - id: auth_step
+      description: Transform the response received from authn api
+      fn: com.gs.transform
+      args:
+        headers:
+          Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJtcy5zYW1wbGUuY29tIiwiYXVkIjoic2FtcGxlLmNvbSJ9.nA164pw_q2FK_VUL9jkqId75u29v-6GGVFOnanMT3KE'
