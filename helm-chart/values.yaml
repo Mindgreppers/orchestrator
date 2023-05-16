@@ -25,9 +25,9 @@ serviceAccount:
   name: ""
 
 podAnnotations:
-  prometheus.io/scrape: 'true'
-  prometheus.io/path: '/metrics'
-  prometheus.io/port: '80'
+  godspeed.systems/collection_interval: 30s
+  godspeed.systems/port: "3000"
+  godspeed.systems/scrape: "true"
 
   # vault.hashicorp.com/agent-inject: 'true'
   # vault.hashicorp.com/role: 'vault-role'
