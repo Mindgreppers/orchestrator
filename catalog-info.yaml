@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: orchestrator
+  annotations:
+    github.com/project-slug: Mindgreppers/orchestrator
+spec:
+  type: other
+  lifecycle: unknown
+  owner: default
